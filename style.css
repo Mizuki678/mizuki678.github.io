@@ -34,7 +34,113 @@ body{
     50%{
         background-position:100% 50%;
     }
+/* ===========================
+AI HERO CARD
+=========================== */
 
+.ai-card{
+
+    width:380px;
+
+    padding:40px;
+
+    text-align:center;
+
+}
+
+.chip{
+
+    width:180px;
+
+    height:180px;
+
+    margin:auto;
+
+    border-radius:30px;
+
+    border:3px solid rgba(255,255,255,.18);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    animation:floatChip 4s ease-in-out infinite;
+
+}
+
+.chip::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-12px;
+
+    border-radius:35px;
+
+    border:2px solid rgba(116,192,252,.25);
+
+}
+
+.chip-core{
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#00C6FF,#3A86FF);
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    box-shadow:0 0 35px rgba(58,134,255,.55);
+
+}
+
+.tech-list{
+
+    margin-top:30px;
+
+}
+
+.tech-list p{
+
+    margin:12px 0;
+
+    font-size:17px;
+
+}
+
+@keyframes floatChip{
+
+    0%,100%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+}
     100%{
         background-position:0% 50%;
     }
