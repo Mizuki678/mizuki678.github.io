@@ -1,1 +1,492 @@
+/* ===========================
+   Google Font
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:linear-gradient(-45deg,#6C63FF,#7B2CBF,#3A86FF,#FF4D9D);
+    background-size:400% 400%;
+    animation:gradientMove 15s ease infinite;
+    color:white;
+}
+
+/* Animated Gradient */
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* ===========================
+ Floating Background
+=========================== */
+
+.bg-circle{
+
+    position:fixed;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    animation:float 12s ease-in-out infinite;
+    z-index:-1;
+
+}
+
+.circle1{
+
+    width:260px;
+    height:260px;
+    top:5%;
+    left:5%;
+
+}
+
+.circle2{
+
+    width:180px;
+    height:180px;
+    bottom:8%;
+    right:10%;
+    animation-delay:3s;
+
+}
+
+.circle3{
+
+    width:120px;
+    height:120px;
+    top:55%;
+    left:65%;
+    animation-delay:6s;
+
+}
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-25px);
+
+    }
+
+}
+
+/* ===========================
+ Navbar
+=========================== */
+
+nav{
+
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(255,255,255,.08);
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+.logo span{
+
+    color:#74C0FC;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+}
+
+nav ul li{
+
+    margin-left:35px;
+
+}
+
+nav ul li a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#74C0FC;
+
+}
+
+/* ===========================
+ Hero
+=========================== */
+
+.hero{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:150px 8% 80px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-text{
+
+    flex:1;
+
+    min-width:300px;
+
+}
+
+.hero-text h1{
+
+    font-size:60px;
+
+    margin-bottom:15px;
+
+}
+
+.hero-text h1 span{
+
+    color:#74C0FC;
+
+}
+
+.hero-text p{
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    opacity:.9;
+
+    margin-bottom:35px;
+
+}
+
+/* ===========================
+ Buttons
+=========================== */
+
+.btn{
+
+    display:inline-block;
+
+    padding:14px 35px;
+
+    margin-right:15px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    background:linear-gradient(90deg,#3A86FF,#00C6FF);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.btn-outline{
+
+    background:transparent;
+
+    border:2px solid white;
+
+}
+
+.btn-outline:hover{
+
+    background:white;
+
+    color:#222;
+
+}
+
+/* ===========================
+ Glass Card
+=========================== */
+
+.glass{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:25px;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
+
+}
+
+/* ===========================
+ About
+=========================== */
+
+section{
+
+    padding:80px 8%;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    font-size:40px;
+
+    margin-bottom:50px;
+
+}
+
+.about{
+
+    padding:40px;
+
+}
+
+.about p{
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+/* ===========================
+ Cards
+=========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    padding:30px;
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.card h3{
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    opacity:.9;
+
+    line-height:1.7;
+
+}
+
+/* ===========================
+ Login Box
+=========================== */
+
+.login-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+.login-box{
+
+    width:420px;
+
+    padding:45px;
+
+}
+
+.login-box h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.input-group{
+
+    margin-bottom:20px;
+
+}
+
+.input-group input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.input-group input::placeholder{
+
+    color:#ddd;
+
+}
+
+.full-btn{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    margin-top:15px;
+
+}
+
+/* ===========================
+ Footer
+=========================== */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    opacity:.85;
+
+}
+
+/* ===========================
+ Responsive
+=========================== */
+
+@media(max-width:900px){
+
+.hero{
+
+    text-align:center;
+
+}
+
+.hero-text h1{
+
+    font-size:45px;
+
+}
+
+nav{
+
+    flex-direction:column;
+
+}
+
+nav ul{
+
+    margin-top:20px;
+
+}
+
+}
