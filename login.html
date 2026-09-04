@@ -1,151 +1,272 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    <title>ALBCC | Login</title>
 
-.box {
-  width: 350px;
-  padding: 40px;
-  background: #1c1c1c;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-}
+    <link rel="stylesheet" href="styles.css">
 
-input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-bottom: 2px solid #444;
-  background: transparent;
-  color: white;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #00ff99;
-  background: transparent;
-  color: #00ff99;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #00ff99;
-  color: #111;
-}
-
-a {
-  color: #00ff99;
-  font-size: 14px;
-  cursor: pointer;
-}
-</style>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-<div class="box">
-  <h2>Sign Up / Login</h2>
+    <!-- Background Effects -->
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle2"></div>
+    <div class="bg-circle circle3"></div>
 
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            ALBCC<span> AI</span>
+        </div>
 
-  <button onclick="signUp()">Sign Up</button>
-  <button onclick="login()">Login</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#technology">Technology</a></li>
+        </ul>
+    </nav>
 
-  <p><a onclick="resetPassword()">Forgot Password?</a></p>
 
-  <p id="message"></p>
-</div>
+    <!-- Login Section -->
+    <main class="login-page">
 
-<script type="module">
+        <div class="login-card glass">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+            <div class="login-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail
-}
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+            <h1>Welcome Back</h1>
 
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID"
-};
+            <p class="login-subtitle">
+                Sign in to access your Adaptive Learning system.
+            </p>
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                >
+            </div>
 
-window.signUp = function() {
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+            </div>
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+            <button class="login-btn" onclick="login()">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </button>
 
-  createUserWithEmailAndPassword(auth, email, password)
-  .then(() => {
+            <button class="signup-btn" onclick="signUp()">
+                <i class="fa-solid fa-user-plus"></i>
+                Create Account
+            </button>
 
-    document.getElementById("message").innerText = "User Created!";
-    window.location.href = "index.html";
+            <p class="forgot">
+                <a onclick="resetPassword()">Forgot Password?</a>
+            </p>
 
-  })
-  .catch(error => {
-    document.getElementById("message").innerText = error.message;
-  });
+            <p id="message"></p>
 
-}
+            <div class="back-home">
+                <a href="index.html">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
 
-window.login = function() {
+        </div>
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    </main>
+        <!-- Firebase Authentication -->
+    <script type="module">
 
-  signInWithEmailAndPassword(auth, email, password)
-  .then(() => {
+        import { initializeApp } from
+        "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
-    document.getElementById("message").innerText = "Login Successful!";
-    window.location.href = "index.html";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            sendPasswordResetEmail
+        } from
+        "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  })
-  .catch(error => {
-    document.getElementById("message").innerText = error.message;
-  });
 
-}
+        // Firebase Configuration
+        const firebaseConfig = {
 
-window.resetPassword = function(){
+            apiKey: "YOUR_API_KEY",
 
-  const email = document.getElementById("email").value;
+            authDomain: "YOUR_AUTH_DOMAIN",
 
-  sendPasswordResetEmail(auth,email)
-  .then(()=>{
-    document.getElementById("message").innerText = "Password reset email sent!";
-  })
-  .catch(error=>{
-    document.getElementById("message").innerText = error.message;
-  });
+            projectId: "YOUR_PROJECT_ID",
 
-}
+            appId: "YOUR_APP_ID"
 
-</script>
+        };
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+
+        // ==============================
+        // SIGN UP
+        // ==============================
+
+        window.signUp = function () {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            if (!email || !password) {
+
+                document.getElementById("message").innerText =
+                    "Please enter your email and password.";
+
+                return;
+            }
+
+
+            createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            )
+
+            .then(() => {
+
+                document.getElementById("message").innerText =
+                    "Account created successfully!";
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+
+            })
+
+            .catch(error => {
+
+                document.getElementById("message").innerText =
+                    error.message;
+
+            });
+
+        };
+
+
+        // ==============================
+        // LOGIN
+        // ==============================
+
+        window.login = function () {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            if (!email || !password) {
+
+                document.getElementById("message").innerText =
+                    "Please enter your email and password.";
+
+                return;
+            }
+
+
+            signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            )
+
+            .then(() => {
+
+                document.getElementById("message").innerText =
+                    "Login successful!";
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+
+            })
+
+            .catch(error => {
+
+                document.getElementById("message").innerText =
+                    error.message;
+
+            });
+
+        };
+
+
+        // ==============================
+        // FORGOT PASSWORD
+        // ==============================
+
+        window.resetPassword = function () {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+
+            if (!email) {
+
+                document.getElementById("message").innerText =
+                    "Enter your email first.";
+
+                return;
+            }
+
+
+            sendPasswordResetEmail(auth, email)
+
+            .then(() => {
+
+                document.getElementById("message").innerText =
+                    "Password reset email sent!";
+
+            })
+
+            .catch(error => {
+
+                document.getElementById("message").innerText =
+                    error.message;
+
+            });
+
+        };
+
+    </script>
 
 </body>
 </html>
